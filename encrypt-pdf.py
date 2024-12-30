@@ -23,5 +23,5 @@ writer = PdfWriter(clone_from=reader)
 writer.encrypt(args.password, algorithm="AES-256")
 
 # Save the new PDF to a file
-with open(output_file_name + "-p" + extension, "wb") as f:
+with open(str(args.file_name), "wb") as f:
     writer.write(f)

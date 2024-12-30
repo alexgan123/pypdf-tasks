@@ -25,5 +25,5 @@ else:
 writer = PdfWriter(clone_from=reader)
 
 # Save the new PDF to a file
-with open(output_file_name + "-d" + extension, "wb") as f:
+with open(str(args.file_name), "wb") as f:
     writer.write(f)
