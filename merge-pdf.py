@@ -3,7 +3,7 @@ import os
 from pypdf import PdfWriter
 
 parser = argparse.ArgumentParser("Merge PDF")
-parser.add_argument("pdf_files", nargs="*")
+parser.add_argument("pdf_files", type=str, nargs="*")
 args = parser.parse_args()
 
 if len(args.pdf_files) < 2:
