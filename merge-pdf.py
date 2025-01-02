@@ -1,5 +1,5 @@
 import argparse
-
+import os
 from pypdf import PdfWriter
 
 parser = argparse.ArgumentParser("Merge PDF")
@@ -14,8 +14,8 @@ for pdf in args.pdf_files:
     extension = pdf[pdf.rfind('.'):]
     output_file_name = pdf[:pdf.rfind('.')]
 
-    if (extension != ".pdf"):
-        raise TypeError("File types must all be pdf")
+    if (extension.lower() != ".pdf"):
+        raise ValueError("File types must all be pdf")
 
 
 merger = PdfWriter()
@@ -23,8 +23,15 @@ merger = PdfWriter()
 for pdf in args.pdf_files:
     merger.append(pdf)
 
-merged_pdf_file_name = "merged-pdf.pdf"
+base_name = "merged"
+ext = ".pdf"
+merged_pdf_file_name = base_name + ext
+counter = 1
 
+while os.path.exists(merged_pdf_file_name):
+    merged_pdf_file_name = base_name + "-" + str(counter) + ext
+    counter += 1
+    
 merger.write(merged_pdf_file_name)
 merger.close()
 

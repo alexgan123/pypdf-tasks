@@ -11,8 +11,8 @@ full_file_name = str(args.file_name)
 extension = full_file_name[full_file_name.rfind('.'):]
 output_file_name = full_file_name[:full_file_name.rfind('.')]
 
-if (extension != ".pdf"):
-    raise TypeError("File type must be pdf")
+if (extension.lower() != ".pdf"):
+    raise ValueError("File type must be pdf")
 
 
 reader = PdfReader(args.file_name)
@@ -27,3 +27,5 @@ writer = PdfWriter(clone_from=reader)
 # Save the new PDF to a file
 with open(str(args.file_name), "wb") as f:
     writer.write(f)
+
+print("Decrypted " + args.file_name)
