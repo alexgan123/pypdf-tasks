@@ -7,11 +7,7 @@ parser.add_argument("file_name", type=str)
 parser.add_argument("password", type=str)
 args = parser.parse_args()
 
-full_file_name = str(args.file_name)
-extension = full_file_name[full_file_name.rfind('.'):]
-output_file_name = full_file_name[:full_file_name.rfind('.')]
-
-if (extension.lower() != ".pdf"):
+if (str(args.file_name).lower().endswith(".pdf") == False):
     raise ValueError("File type must be pdf")
 
 

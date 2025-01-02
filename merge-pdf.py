@@ -10,11 +10,7 @@ if len(args.pdf_files) < 2:
     raise RuntimeError("Input at least 2 pdf files")
 
 for pdf in args.pdf_files:
-    full_file_name = str(pdf)
-    extension = pdf[pdf.rfind('.'):]
-    output_file_name = pdf[:pdf.rfind('.')]
-
-    if (extension.lower() != ".pdf"):
+    if (str(pdf).lower().endswith(".pdf") == False):
         raise ValueError("File types must all be pdf")
 
 
