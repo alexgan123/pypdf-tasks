@@ -18,7 +18,7 @@ reader = PdfReader(args.file_name)
 writer = PdfWriter()
 
 
-for i in range(1, reader.get_num_pages()):
+for i in range(1, reader.get_num_pages() + 1):
     if i not in args.pages_to_remove:
         writer.add_page(reader.pages[i - 1])
 
